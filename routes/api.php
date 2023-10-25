@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\PruebaController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Http\Request;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
