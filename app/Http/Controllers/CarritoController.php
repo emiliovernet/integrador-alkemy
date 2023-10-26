@@ -2,42 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrito;
 use Illuminate\Http\Request;
 
 class CarritoController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        // Aquí mostrarías el contenido del carrito.
+        //
     }
 
-    public function agregarProducto(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        // Agregar un producto al carrito.
+        //
     }
 
-    public function actualizarProducto(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        // Actualizar la cantidad de un producto en el carrito.
+        //
     }
 
-    public function eliminarProducto(Request $request)
+    /**
+     * Display the specified resource.
+     */
+    public function show(Carrito $carrito)
     {
-        // Eliminar un producto del carrito.
+        //
     }
 
-    public function lista()
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Carrito $carrito)
     {
-        // Listar los productos del carrito
+        //
     }
 
-    public function resumen()
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Carrito $carrito)
     {
-        // Mostrar el resumen del carrito
+        //
     }
 
-    public function limpiar()
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Carrito $carrito)
     {
-        // Limpiar el carrito (eliminar todos los productos).
+        //
     }
 }

@@ -44,15 +44,16 @@ Route::get('/producto/{id}', [ProductoController::class, 'ver']);
 Route::post('/metodospago', [MetodosPagoController::class, 'crear']);
 Route::put('/metodospago/{id}', [MetodosPagoController::class, 'actualizar']);
 
-// RUTAS CARRITO DE COMRAS
-Route::get('/carrito', [CarritoController::class, 'index']);
-Route::post('/carrito/agregar', [CarritoController::class, 'agregarProducto']);
-Route::put('/carrito/actualizar/{idProducto}', [CarritoController::class, 'actualizarProducto']);
-Route::delete('/carrito/eliminar/{idProducto}', [CarritoController::class, 'eliminarProducto']);
-Route::get('/carrito/listar/{idCarrito}', [CarritoController::class, 'lista']);
-Route::get('/carrito/resumir/{idCarrito}', [CarritoController::class, 'resumen']);
-Route::delete('/carrito/limpiar/{idCarrito]', [CarritoController::class, 'limpiar']);
-Route::get('/carrito/finalizar/{idCarrito}', [CarritoController::class, 'finalizarCarrito']);
+// // RUTAS CARRITO DE COMRAS
+Route::apiResource('carrito', CarritoController::class);
+// Route::get('/carrito', [CarritoController::class, 'index']);
+// Route::post('/carrito/agregar', [CarritoController::class, 'agregarProducto']);
+// Route::put('/carrito/actualizar/{idProducto}', [CarritoController::class, 'actualizarProducto']);
+// Route::delete('/carrito/eliminar/{idProducto}', [CarritoController::class, 'eliminarProducto']);
+// Route::get('/carrito/listar/{idCarrito}', [CarritoController::class, 'lista']);
+// Route::get('/carrito/resumir/{idCarrito}', [CarritoController::class, 'resumen']);
+// Route::delete('/carrito/limpiar/{idCarrito]', [CarritoController::class, 'limpiar']);
+// Route::get('/carrito/finalizar/{idCarrito}', [CarritoController::class, 'finalizarCarrito']);
 
-// RUTAS ORDEN DE COMPRA
+// // RUTAS ORDEN DE COMPRA
 Route::post('/ordenes/crear', [OrdenesController::class, 'crearOrden']);
