@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MetodoPago;
 use Illuminate\Http\Request;
 
 class MetodosPagoController extends Controller
 {
     public function crear(Request $request)
     {
-        echo "Se CREO una Metodo Pago";
+        $MetodoPago = new MetodoPago();
+        $MetodoPago->tipo = $request->input('tipo');
+        $MetodoPago->save();
+        return response()->json(['resultado' => 'Todo ok']);
     }
 
     public function actualizar(Request $request, $id)
     {
-        echo "Se ACTUALIZO una Metodo Pago " .$id;
+        $MetodoPago = MetodoPago::find($id);
+        $MetodoPago->tipo = $request->input('tipo');
+        $MetodoPago->save();
+        return response()->json(['resultado' => 'Metodo Pago actualizada con éxito']);
     }
 }
