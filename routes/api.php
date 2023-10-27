@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\MetodosPagoController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +22,8 @@ use App\Http\Controllers\MetodosPagoController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::post('/login', [AuthController::class, 'auth']);
 
 Route::get('/usuario', [UsuarioController::class, 'listar']);
 Route::get('/usuario/{id}', [UsuarioController::class, 'ver']);
