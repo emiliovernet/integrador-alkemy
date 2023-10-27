@@ -24,7 +24,7 @@ class CarritoFactory extends Factory
 
         return [
             'user_id' => fake()->randomElement($usuarios),
-            'importe'=> fake()->randomDigit(),
+            'importe'=> fake()->randomFloat(),
             'fecha_creacion' => fake()->dateTime()
         ];
     }

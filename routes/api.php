@@ -55,5 +55,8 @@ Route::apiResource('carrito', CarritoController::class);
 // Route::delete('/carrito/limpiar/{idCarrito]', [CarritoController::class, 'limpiar']);
 // Route::get('/carrito/finalizar/{idCarrito}', [CarritoController::class, 'finalizarCarrito']);
 
+// RUTAS PEDIDOS
+Route::apiResource('pedido', PedidoController::class);
+
 // // RUTAS ORDEN DE COMPRA
 Route::post('/ordenes/crear', [OrdenesController::class, 'crearOrden']);
