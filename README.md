@@ -9,7 +9,7 @@ Este proyecto es una tienda de negocios en línea desarrollada utilizando el fra
 
 # Instalacion del proyecto
 
-1) Copiar link de nuestro repositorio [enlase](https://github.com/emiliovernet/integrador-alkemy/tree/main)
+1) Copiar link de nuestro repositorio [enlace](https://github.com/emiliovernet/integrador-alkemy/tree/main)
 2) Dentro de la carpeta htdoc ejecutar en comando "git clone URL".
 3) Luego cd integrador-alkemy .
 4) Ejecutar el comando "composer update" para instalar las dependecias.
@@ -20,9 +20,9 @@ Este proyecto es una tienda de negocios en línea desarrollada utilizando el fra
 9) Abrir el server en consola ejecutra comando "php artisan serve"
 
 
-# Configuracion Posman
+# Configuracion Postman
 
-archivo de configuras del posman [Descargar](https://github.com/emiliovernet/integrador-alkemy/tree/main)
+Archivo de configuración del postman [Descargar](https://github.com/emiliovernet/integrador-alkemy/tree/main)
 
 # Creacion de los rutas
 
