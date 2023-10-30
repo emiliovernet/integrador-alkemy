@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carrito;
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 
-class CarritoController extends Controller
+class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class CarritoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Carrito $carrito)
+    public function show(Pedidos $pedidos)
     {
         //
     }
@@ -42,7 +42,7 @@ class CarritoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Carrito $carrito)
+    public function edit(Pedidos $pedidos)
     {
         //
     }
@@ -50,7 +50,7 @@ class CarritoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Carrito $carrito)
+    public function update(Request $request, Pedidos $pedidos)
     {
         //
     }
@@ -58,7 +58,7 @@ class CarritoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Carrito $carrito)
+    public function destroy(Pedidos $pedidos)
     {
         //
     }

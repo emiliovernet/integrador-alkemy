@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -13,10 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
+        // \App\Models\::factory()->create([
+        //     '' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
@@ -24,7 +23,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\MetodoPago::factory(5)->create();
         \App\Models\Producto::factory(5)->create();
         \App\Models\Usuario::factory(5)->create();
+        \App\Models\Carrito::factory(5)->create();
+        \App\Models\Pedido::factory(5)->create();
+         
         //\App\Models\UsuarioLT::factory(5)->create();
-
+        
     }
 }
