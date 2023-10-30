@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MetodoPago;
 use Illuminate\Http\Request;
 
-class MetodosPagoController extends Controller
+class MetodoPagoController extends Controller
 {
     public function crear(Request $request)
     {

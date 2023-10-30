@@ -1,10 +1,8 @@
 <?php
 
 namespace Database\Factories;
-
 use App\Models\Carrito;
 use App\Models\MetodoPago;
-
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +18,6 @@ class OrdenFactory extends Factory
      */
     public function definition(): array
     {
-
         $carritos = Carrito::all()->pluck('id')->toArray();
         $metodos_pago = MetodoPago::all()->pluck('id')->toArray();
 

@@ -48,10 +48,34 @@ Metodos de Pago:
 - POST api/metodospago
 - PUT api/metodospago/{id}
 
-Carritos de compras:
+Carritos de compra:
 
--GET api/carrito
--GET api/carrito/id
--POST api/carrito
--PUT api/carrito/id
--DELETE api/carrito/id
+- GET api/carrito
+- GET api/carrito/id
+- POST api/carrito
+- PUT api/carrito/id
+- DELETE api/carrito/id
+
+Pedidos:
+
+- GET api/pedido
+- GET api/pedido/id
+- POST api/pedido
+- PUT api/pedido/id
+- DELETE api/pedido/id
+
+Ordenes de compra:
+
+- GET api/orden
+- GET api/orden/id
+- POST api/orden
+- PUT api/orden/id
+- DELETE api/orden/id
+
+Stocks:
+
+- GET api/stock
+- GET api/stock/id
+- POST api/stock
+- PUT api/stock/id
+- DELETE api/stock/id

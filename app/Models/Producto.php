@@ -32,4 +32,10 @@ class Producto extends Model
     {
         return $this->hasMany(Pedido::class);
     }
+
+    public function stock(): HasMany
+    {
+        return $this->hasMany(Stock::class);
+    }
+    
 }

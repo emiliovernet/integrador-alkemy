@@ -32,10 +32,10 @@ class OrdenController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Orden $carrito)
+    public function show(Orden $orden)
     {
         // Mostrar un carrito específico
-        return response()->json($carrito);
+        return response()->json($orden);
     }
 
     /**
