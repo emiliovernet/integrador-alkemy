@@ -7,8 +7,10 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\MetodosPagoController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\OrdenesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//Route::post('/login', [AuthController::class, 'auth']);
+
+
 // RUTAS USUARIO
+
 Route::get('/usuario', [UsuarioController::class, 'listar']);
 Route::get('/usuario/{id}', [UsuarioController::class, 'ver']);
 Route::put('/usuario/{id}', [UsuarioController::class, 'actulizar']);

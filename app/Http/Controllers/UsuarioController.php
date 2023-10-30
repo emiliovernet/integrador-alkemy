@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -11,7 +12,8 @@ class UsuarioController extends Controller
      */
     public function listar()
     {
-        return response()->json(['mensaje' => 'Usuario Index']);
+        $usuarios = Usuario::all();
+        return response()->json(['Usuarios' => $usuarios]);
     }
 
     /**
@@ -19,7 +21,8 @@ class UsuarioController extends Controller
      */
     public function ver(string $id)
     {
-        echo "ver el usuario con id " . $id;
+        $usuarios = Usuario::find($id);
+        return response()->json(['Usuarios' => $usuarios]);
     }
 
     /**
@@ -27,6 +30,10 @@ class UsuarioController extends Controller
      */
     public function actulizar(Request $request, $id)
     {
-        echo "Se actualizo el usuario con el id: " . $request->id;
+        $usuario = Usuario::find($id);
+        $usuario->nombre = $request->input('nombre');
+        $usuario->telefono = $request->input('telefono');
+        $usuario->save();
+        return response()->json(['resultado' => 'Usuario actualizada con éxito']);
     }
 }
