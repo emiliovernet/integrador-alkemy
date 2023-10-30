@@ -5,9 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 use App\Models\MetodoPago;
-
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MetodosPago>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MetodoPago>
  */
 class MetodoPagoFactory extends Factory
 {
@@ -16,8 +15,6 @@ class MetodoPagoFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    protected $model = MetodoPago::class;
-
     public function definition(): array
     {
         return [

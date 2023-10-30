@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pedidos;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
-class PedidosController extends Controller
+class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+        // Obtener una lista de pedidos
+        $pedidos = Pedido::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json($pedidos);
     }
 
     /**
@@ -28,38 +23,43 @@ class PedidosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $pedido = Pedido::create($request->all());
+
+        return response()->json($pedido, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pedidos $pedidos)
+    public function show(Pedido $pedido)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pedidos $pedidos)
-    {
-        //
+        // Mostrar un Pedido específico
+        return response()->json($pedido);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pedidos $pedidos)
+    public function update(Request $request, Pedido $pedido)
     {
-        //
+
+
+        $pedido->update($request->all());
+        $pedido = Pedido::find($pedido->id);
+
+        return response()->json($pedido, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pedidos $pedidos)
+    public function destroy(Pedido $pedido)
     {
-        //
+        $pedidoId = $pedido->id;
+        // Eliminar el Pedido
+        $pedido->delete();
+
+        return response()->json("El Pedido $pedidoId ha sido eliminado");
     }
 }

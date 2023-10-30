@@ -17,9 +17,7 @@ return new class extends Migration
             $table->double('precio');
             $table->string('imagen', 255)->nullable();
             $table->string('descripcion', 255)->nullable();
-            $table->unsignedBigInteger('categoria_id')->nullable();
-            //$table->foreignId('categoria_id')->constrained();
-            //$table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreignId('categoria_id')->constrained();
             $table->boolean('habilitado')->default(true);
             $table->timestamps();
         });

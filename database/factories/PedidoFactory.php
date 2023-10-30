@@ -3,14 +3,14 @@
 namespace Database\Factories;
 
 
-use App\Models\Usuario;
 use App\Models\Carrito;
+use App\Models\Producto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Carrito>
  */
-class CarritoFactory extends Factory
+class PedidoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,12 +20,15 @@ class CarritoFactory extends Factory
     public function definition(): array
     {
 
-        $usuarios = Usuario::all()->pluck('id')->toArray();
+        $carritos = Carrito::all()->pluck('id')->toArray();
+        $productos = Producto::all()->pluck('id')->toArray();
 
         return [
-            'usuario_id' => fake()->randomElement($usuarios),
+            'carrito_id' => fake()->randomElement($carritos),
+            'producto_id' => fake()->randomElement($productos),
+            'cantidad'=> fake()->randomNumber(3, false),
             'importe'=> fake()->randomFloat(2, 0, 1000000),
-            'fecha_creacion' => fake()->dateTime()
+            
         ];
     }
 }

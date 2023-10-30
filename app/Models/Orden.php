@@ -7,26 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
-class Pedido extends Model
+class Orden extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
-
-    protected $fillable = ['carrito_id', 'producto_id', 'cantidad', 'importe'];
-
+    protected $fillable = ['carrito_id', 'metodo_pago_id', 'fecha_creacion'];
     public function carrito(): BelongsTo
     {
         return $this->belongsTo(Carrito::class);
     }
 
-    public function producto(): BelongsTo
+    public function metodo_pago(): BelongsTo
     {
-        return $this->belongsTo(Producto::class);
+        return $this->belongsTo(MetodoPago::class);
     }
 
-    public function ordenes(): HasMany
-    {
-        return $this->hasMany(Orden::class);
-    }
 }

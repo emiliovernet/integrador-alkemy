@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Producto;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Pedido;
-// use App\Models\Producto;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pedidos>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Stock>
  */
-class PedidosFactory extends Factory
+class StockFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,12 +17,12 @@ class PedidosFactory extends Factory
      */
     public function definition(): array
     {
-        // $productos = Producto::all('id')->toArray();
+
+        $productos = Producto::all()->pluck('id')->toArray();
 
         return [
-            // 'procucto_id' => fake()->randomElement($productos),
+            'producto_id' => fake()->randomElement($productos),
             'cantidad'=> fake()->randomNumber(3, false),
-            'importe' => fake()->randomFloat(),
         ];
     }
 }

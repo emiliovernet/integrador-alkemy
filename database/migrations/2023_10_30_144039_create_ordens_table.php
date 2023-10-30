@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('metodospagos', function (Blueprint $table) {
+        Schema::create('ordens', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo', 255)->nullable(false);
+            $table->foreignId('carrito_id')->constrained();
+            $table->foreignId('metodo_pago_id')->constrained();
+            $table->dateTime('fecha_creacion', $precision = 0)->default(\Carbon\Carbon::now());
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('metodos_pagos');
+        Schema::dropIfExists('ordens');
     }
 };

@@ -12,15 +12,10 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        //
-    }
+        // Obtener una lista de carritos
+        $carritos = Carrito::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json($carritos);
     }
 
     /**
@@ -28,7 +23,10 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $carrito = Carrito::create($request->all());
+
+        return response()->json($carrito, 201);
     }
 
     /**
@@ -36,15 +34,8 @@ class CarritoController extends Controller
      */
     public function show(Carrito $carrito)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Carrito $carrito)
-    {
-        //
+        // Mostrar un carrito específico
+        return response()->json($carrito);
     }
 
     /**
@@ -52,7 +43,12 @@ class CarritoController extends Controller
      */
     public function update(Request $request, Carrito $carrito)
     {
-        //
+
+
+        $carrito->update($request->all());
+        $carrito = Carrito::find($carrito->id);
+
+        return response()->json($carrito, 200);
     }
 
     /**
@@ -60,6 +56,10 @@ class CarritoController extends Controller
      */
     public function destroy(Carrito $carrito)
     {
-        //
+        $carritoId = $carrito->id;
+        // Eliminar el carrito
+        $carrito->delete();
+
+        return response()->json("El carrito $carritoId ha sido eliminado");
     }
 }
