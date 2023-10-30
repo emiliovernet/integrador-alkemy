@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Usuario::factory(5)->create();
         \App\Models\Carrito::factory(5)->create();
         \App\Models\Pedido::factory(5)->create();
+        \App\Models\Orden::factory(5)->create();
          
         //\App\Models\UsuarioLT::factory(5)->create();
         

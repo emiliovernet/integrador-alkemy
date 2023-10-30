@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 use App\Models\Producto;
+use App\Models\Categoria;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Producto>
  */
@@ -17,11 +18,14 @@ class ProductoFactory extends Factory
      */
     public function definition(): array
     {
+
+        $categorias = Categoria::all()->pluck('id')->toArray();
+
         return [
             'nombre' => $this->faker->word,
             'precio' => $this->faker->randomFloat(2, 10, 1000), 
             'descripcion' => $this->faker->text(100),
-            'categoria_id' => $this->faker->numberBetween(1, 10), 
+            'categoria_id' => fake()->randomElement($categorias),
             'habilitado' => $this->faker->boolean(90),
         ];
     }

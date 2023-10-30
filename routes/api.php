@@ -9,8 +9,9 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\MetodosPagoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\OrdenesController;
-
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,17 +54,9 @@ Route::put('/metodospago/{id}', [MetodosPagoController::class, 'actualizar']);
 
 // // RUTAS CARRITO DE COMRAS
 Route::apiResource('carrito', CarritoController::class);
-// Route::get('/carrito', [CarritoController::class, 'index']);
-// Route::post('/carrito/agregar', [CarritoController::class, 'agregarProducto']);
-// Route::put('/carrito/actualizar/{idProducto}', [CarritoController::class, 'actualizarProducto']);
-// Route::delete('/carrito/eliminar/{idProducto}', [CarritoController::class, 'eliminarProducto']);
-// Route::get('/carrito/listar/{idCarrito}', [CarritoController::class, 'lista']);
-// Route::get('/carrito/resumir/{idCarrito}', [CarritoController::class, 'resumen']);
-// Route::delete('/carrito/limpiar/{idCarrito]', [CarritoController::class, 'limpiar']);
-// Route::get('/carrito/finalizar/{idCarrito}', [CarritoController::class, 'finalizarCarrito']);
 
 // RUTAS PEDIDOS
 Route::apiResource('pedido', PedidoController::class);
 
 // // RUTAS ORDEN DE COMPRA
-Route::post('/ordenes/crear', [OrdenesController::class, 'crearOrden']);
+Route::apiResource('orden', OrdenController::class);

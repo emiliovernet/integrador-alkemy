@@ -1,6 +1,6 @@
 # Tienda de Negocios en PHP con Laravel
 
-Este proyecto es una tienda de negocios en línea desarrollada utilizando el framework Laravel en PHP. Proporciona una plataforma de comercio electrónico donde los clientes pueden navegar por productos, agregar artículos al carrito de compras y realizar compras en línea
+Este proyecto es una API RESTFULL de una tienda de negocios en línea desarrollada utilizando el framework Laravel en PHP. Proporciona una plataforma de comercio electrónico donde los clientes pueden navegar por productos, agregar artículos al carrito de compras y realizar compras en línea
 
 # Integrantes del grupo 1
 
@@ -9,42 +9,49 @@ Este proyecto es una tienda de negocios en línea desarrollada utilizando el fra
 
 # Instalacion del proyecto
 
-1) Copiar link de nuestro repositorio [enlace](https://github.com/emiliovernet/integrador-alkemy/tree/main)
-2) Dentro de la carpeta htdoc ejecutar en comando "git clone URL".
-3) Luego cd integrador-alkemy .
-4) Ejecutar el comando "composer update" para instalar las dependecias.
-5) Crear archivo .env con el comando "copy .env.example .env"
-6) Generar Key con el comando "php artisan key:generate"
-7) Para cerar las tablas ejecutar el comando "php artisan migrate"
-8) Para llenar las base de datos es siguiente comando "php artisan db:seed"
-9) Abrir el server en consola ejecutra comando "php artisan serve"
+1) Dentro del directorio "C:\\xampp\\php\\php.exe" ejecutar el comando "git clone https://github.com/emiliovernet/integrador-alkemy/tree/main".
+2) Luego "cd integrador-alkemy".
+3) Ejecutar el comando "composer update" para instalar las dependecias.
+4) Crear archivo .env con el comando "copy .env.example .env".
+5) Generar Key con el comando "php artisan key:generate".
+6) Para crear la base de datos ejecutar el comando "php artisan migrate".
+7) Para llenar la base de datos ejecutar "php artisan db:seed".
+8) Para levantar el servidor ejecutar "php artisan serve".
 
 
-# Configuracion Postman
+# Configuración Postman
 
-Archivo de configuración del postman [Descargar](https://github.com/emiliovernet/integrador-alkemy/tree/main)
+Archivo de configuración del Postman [Descargar](https://github.com/emiliovernet/integrador-alkemy/tree/main)
 
-# Creacion de los rutas
+# RUTAS DE LA API
 
 Usuarios:
 
-- GET /usuario 
-- GET /usuario/{id}
-- PUT /usuario/{id}
+- GET api/usuario 
+- GET api/usuario/{id}
+- PUT api/usuario/{id}
 
-Categoria:
+Categorias:
 
-- POST /categoria
-- PUT /categoria/{id}
+- POST api/categoria
+- PUT api/categoria/{id}
 
-Producto:
+Productos:
 
-- POST /producto
-- PUT /producto/{id}
-- DELETE /producto/{id}
-- GET /producto/{id}
+- POST api/producto
+- PUT api/producto/{id}
+- DELETE api/producto/{id}
+- GET api/producto/{id}
 
-Metodos Pago:
+Metodos de Pago:
 
-- POST /metodospago
-- PUT /metodospago/{id}
+- POST api/metodospago
+- PUT api/metodospago/{id}
+
+Carritos de compras:
+
+-GET api/carrito
+-GET api/carrito/id
+-POST api/carrito
+-PUT api/carrito/id
+-DELETE api/carrito/id
