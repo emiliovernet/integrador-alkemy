@@ -19,7 +19,7 @@ class Usuario extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'usuarios';
+    // protected $table = 'usuarios';
     protected $fillable = [
         'nombre',
         'email',
@@ -49,6 +49,11 @@ class Usuario extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->contrasena;
+    }
 
     public function carritos(): HasMany
     {
