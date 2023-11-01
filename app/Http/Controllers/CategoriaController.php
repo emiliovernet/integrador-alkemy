@@ -12,7 +12,7 @@ class CategoriaController extends Controller
         $categoria = new Categoria();
         $categoria->nombre = $request->input('nombre');
         $categoria->save();
-        return response()->json(['resultado' => 'Todo ok']);
+        return response()->created($categoria);
     }
 
     public function actualizar(Request $request, $id)
@@ -20,6 +20,12 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         $categoria->nombre = $request->input('nombre');
         $categoria->save();
-        return response()->json(['resultado' => 'Categoría actualizada con éxito']);
+        return response()->ok($categoria, $message='Categoría actualizada con éxito');
+    }
+
+    public function listar()
+    {
+        $categorias = Categoria::all();
+        return response()->ok($categorias);
     }
 }

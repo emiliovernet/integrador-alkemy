@@ -15,7 +15,7 @@ class PedidoController extends Controller
         // Obtener una lista de pedidos
         $pedidos = Pedido::all();
 
-        return response()->json($pedidos);
+        return response()->ok($pedidos);
     }
 
     /**
@@ -26,7 +26,7 @@ class PedidoController extends Controller
 
         $pedido = Pedido::create($request->all());
 
-        return response()->json($pedido, 201);
+        return response()->created($pedido);
     }
 
     /**
@@ -35,7 +35,7 @@ class PedidoController extends Controller
     public function show(Pedido $pedido)
     {
         // Mostrar un Pedido específico
-        return response()->json($pedido);
+        return response()->ok($pedido);
     }
 
     /**
@@ -48,7 +48,7 @@ class PedidoController extends Controller
         $pedido->update($request->all());
         $pedido = Pedido::find($pedido->id);
 
-        return response()->json($pedido, 200);
+        return response()->ok($pedido, $message= 'Pedido actualizado con éxito');
     }
 
     /**
@@ -60,6 +60,6 @@ class PedidoController extends Controller
         // Eliminar el Pedido
         $pedido->delete();
 
-        return response()->json("El Pedido $pedidoId ha sido eliminado");
+        return response()->ok($message= "El Pedido $pedidoId ha sido eliminado");
     }
 }

@@ -9,17 +9,23 @@ class MetodoPagoController extends Controller
 {
     public function crear(Request $request)
     {
-        $MetodoPago = new MetodoPago();
-        $MetodoPago->tipo = $request->input('tipo');
-        $MetodoPago->save();
-        return response()->json(['resultado' => 'Todo ok']);
+        $metodo_pago = new MetodoPago();
+        $metodo_pago->tipo = $request->input('tipo');
+        $metodo_pago->save();
+        return response()->created($metodo_pago);
     }
 
     public function actualizar(Request $request, $id)
     {
-        $MetodoPago = MetodoPago::find($id);
-        $MetodoPago->tipo = $request->input('tipo');
-        $MetodoPago->save();
-        return response()->json(['resultado' => 'Metodo Pago actualizada con éxito']);
+        $metodo_pago = MetodoPago::find($id);
+        $metodo_pago->tipo = $request->input('tipo');
+        $metodo_pago->save();
+        return response()->ok($metodo_pago, $message='Metodo de pago actualizada con éxito.');
+    }
+
+    public function listar()
+    {
+        $metodos_pago = MetodoPago::all();
+        return response()->ok($metodos_pago);
     }
 }

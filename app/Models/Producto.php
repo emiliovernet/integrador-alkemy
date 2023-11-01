@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Producto extends Model
 {
     use HasFactory;
-    public $timestamps = false;
     protected $table = 'productos';
     protected $fillable = [
         'nombre',
@@ -21,7 +20,16 @@ class Producto extends Model
         'categoria_id',
         'habilitado',
     ];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = [
+        'categoria_id',
+        'habilitado',
+        'created_at', 
+        'updated_at'
+    ];
+
+    protected $with = [
+        'categoria'
+    ];
     
     public function categoria(): BelongsTo
     {

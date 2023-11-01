@@ -35,7 +35,7 @@ class AuthController extends Controller
             'domicilio' => 'nullable|string|max:255',
         ]);
 
-        $request['contrasena'] = Hash::make($request['password']);
+        $request['password'] = Hash::make($request['password']);
 
         $usuario = Usuario::create($request->toArray());
         $token = $usuario->createToken('token')->accessToken;

@@ -11,8 +11,24 @@ class Orden extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-    protected $fillable = ['carrito_id', 'metodo_pago_id', 'fecha_creacion'];
+    protected $fillable = [
+        'carrito_id',
+        'metodo_pago_id',
+        'fecha_creacion'
+    ];
+
+    protected $hidden = [
+        'carrito_id',
+        'metodo_pago_id',
+        'created_at', 
+        'updated_at'
+    ];
+
+    protected $with = [
+        'carrito',
+        'metodo_pago'
+    ];
+
     public function carrito(): BelongsTo
     {
         return $this->belongsTo(Carrito::class);
@@ -22,5 +38,4 @@ class Orden extends Model
     {
         return $this->belongsTo(MetodoPago::class);
     }
-
 }

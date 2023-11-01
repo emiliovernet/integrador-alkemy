@@ -15,7 +15,7 @@ class CarritoController extends Controller
         // Obtener una lista de carritos
         $carritos = Carrito::all();
 
-        return response()->json($carritos);
+        return response()->ok($carritos);
     }
 
     /**
@@ -26,7 +26,7 @@ class CarritoController extends Controller
 
         $carrito = Carrito::create($request->all());
 
-        return response()->json($carrito, 201);
+        return response()->created($carrito);
     }
 
     /**
@@ -35,7 +35,7 @@ class CarritoController extends Controller
     public function show(Carrito $carrito)
     {
         // Mostrar un carrito específico
-        return response()->json($carrito);
+        return response()->ok($carrito);
     }
 
     /**
@@ -48,7 +48,7 @@ class CarritoController extends Controller
         $carrito->update($request->all());
         $carrito = Carrito::find($carrito->id);
 
-        return response()->json($carrito, 200);
+        return response()->ok($carrito);
     }
 
     /**
@@ -60,6 +60,6 @@ class CarritoController extends Controller
         // Eliminar el carrito
         $carrito->delete();
 
-        return response()->json("El carrito $carritoId ha sido eliminado");
+        return response()->ok($message = "$carritoId ha sido eliminado");
     }
 }

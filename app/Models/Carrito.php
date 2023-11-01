@@ -12,9 +12,24 @@ class Carrito extends Model
 {
     use HasFactory;
 
-    
-    public $timestamps = false;
-    protected $fillable = ['usuario_id', 'importe', 'fecha_creacion', 'finalizado'];
+    protected $fillable = [
+        'usuario_id',
+        'importe',
+        'fecha_creacion',
+        'finalizado'
+    ];
+
+    protected $hidden = [
+        'usuario_id',
+        'created_at', 
+        'updated_at'
+    ];
+
+    protected $with = [
+        'usuario'
+    ];
+
+
 
     public function usuario(): BelongsTo
     {

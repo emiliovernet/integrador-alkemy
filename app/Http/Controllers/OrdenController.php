@@ -15,7 +15,7 @@ class OrdenController extends Controller
         // Obtener una lista de ordenes
         $ordenes = Orden::all();
 
-        return response()->json($ordenes);
+        return response()->ok($ordenes);
     }
 
     /**
@@ -26,7 +26,7 @@ class OrdenController extends Controller
 
         $orden = Orden::create($request->all());
 
-        return response()->json($orden, 201);
+        return response()->created($orden);
     }
 
     /**
@@ -35,7 +35,7 @@ class OrdenController extends Controller
     public function show(Orden $orden)
     {
         // Mostrar un carrito específico
-        return response()->json($orden);
+        return response()->ok($orden);
     }
 
     /**
@@ -48,7 +48,7 @@ class OrdenController extends Controller
         $orden->update($request->all());
         $orden = Orden::find($orden->id);
 
-        return response()->json($orden, 200);
+        return response()->ok($orden, $mesage='La orden ha sido actualizada con éxito');
     }
 
     /**
@@ -60,6 +60,6 @@ class OrdenController extends Controller
         // Eliminar el carrito
         $orden->delete();
 
-        return response()->json("La orden $ordenId ha sido eliminada");
+        return response()->ok($message="La orden $ordenId ha sido eliminada");
     }
 }

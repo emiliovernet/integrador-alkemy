@@ -13,7 +13,7 @@ class UsuarioController extends Controller
     public function listar()
     {
         $usuarios = Usuario::all();
-        return response()->json(['Usuarios' => $usuarios]);
+        return response()->ok($usuarios);
     }
 
     /**
@@ -21,19 +21,19 @@ class UsuarioController extends Controller
      */
     public function ver(string $id)
     {
-        $usuarios = Usuario::find($id);
-        return response()->json(['Usuarios' => $usuarios]);
+        $usuario = Usuario::find($id);
+        return response()->ok($usuario);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function actulizar(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
         $usuario = Usuario::find($id);
         $usuario->nombre = $request->input('nombre');
         $usuario->telefono = $request->input('telefono');
         $usuario->save();
-        return response()->json(['resultado' => 'Usuario actualizada con éxito']);
+        return response()->ok($message='Usuario actualizado con éxito');
     }
 }

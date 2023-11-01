@@ -23,7 +23,7 @@ class Usuario extends Authenticatable
     protected $fillable = [
         'nombre',
         'email',
-        'contrasena',
+        'password',
         'telefono',
         'domicilio',
     ];
@@ -52,7 +52,7 @@ class Usuario extends Authenticatable
 
     public function getAuthPassword()
     {
-        return $this->contrasena;
+        return $this->password;
     }
 
     public function carritos(): HasMany
