@@ -22,15 +22,15 @@ class ProductoController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422); // Devolver errores de validación con un código de estado 422 (Entidad no procesable).
         }
-        $Producto = new Producto();
-        $Producto->nombre = $request->input('nombre');
-        $Producto->precio = $request->input('precio');
-        $Producto->imagen = $request->input('imagen');
-        $Producto->descripcion= $request->input('descripcion');
-        $Producto->categoria_id = $request->input('categoria_id');
-        $Producto->habilitado = $request->input('habilitado');
-        $Producto->save();
-        return response()->json(['resultado' => 'Todo ok', $Producto]);
+        $producto = new Producto();
+        $producto->nombre = $request->input('nombre');
+        $producto->precio = $request->input('precio');
+        $producto->imagen = $request->input('imagen');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->categoria_id = $request->input('categoria_id');
+        $producto->habilitado = $request->input('habilitado');
+        $producto->save();
+        return response()->created($producto);
     }
 
     public function actualizar(Request $request, $id)
@@ -47,26 +47,32 @@ class ProductoController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422); // Devolver errores de validación con un código de estado 422 (Entidad no procesable).
         }
-        $Producto = Producto::find($id);
-        $Producto->nombre = $request->input('nombre');
-        $Producto->precio = $request->input('precio');
-        $Producto->descripcion = $request->input('descripcion');
-        $Producto->categoria_id = $request->input('categoria_id');        
-        $Producto->save();
-        return response()->json(['resultado' => 'Todo ok', $Producto]);
+        $producto = Producto::find($id);
+        $producto->nombre = $request->input('nombre');
+        $producto->precio = $request->input('precio');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->categoria_id = $request->input('categoria_id');
+        $producto->save();
+        return response()->ok($producto, $message = 'Producto actualizada con éxito.');
     }
 
     public function eliminar(Request $request, $id)
     {
-        $Producto = Producto::find($id);
-        $Producto->habilitado = false;        
-        $Producto->save();
-        return response()->json(['resultado' => 'Producto Eliminado con éxito']);
+        $producto = Producto::find($id);
+        $producto->habilitado = false;
+        $producto->save();
+        return response()->ok($meesage = "Producto $producto->id Eliminado con éxito.");
     }
 
     public function ver(Request $request, $id)
     {
         $producto = Producto::find($id);
-        return response()->json(['Producto' => $producto]);
+        return response()->ok($producto);
+    }
+
+    public function listar()
+    {
+        $productos = Producto::all();
+        return response()->ok($productos);
     }
 }

@@ -15,7 +15,7 @@ class StockController extends Controller
         // Obtener una lista de stocks
         $stocks = Stock::all();
 
-        return response()->json($stocks);
+        return response()->ok($stocks);
     }
 
     /**
@@ -26,7 +26,7 @@ class StockController extends Controller
 
         $stock = Stock::create($request->all());
 
-        return response()->json($stock, 201);
+        return response()->created($stock);
     }
 
     /**
@@ -35,7 +35,7 @@ class StockController extends Controller
     public function show(Stock $stock)
     {
         // Mostrar un carrito específico
-        return response()->json($stock);
+        return response()->ok($stock);
     }
 
     /**
@@ -48,7 +48,7 @@ class StockController extends Controller
         $stock->update($request->all());
         $stock = Stock::find($stock->id);
 
-        return response()->json($stock, 200);
+        return response()->ok($stock, $message="Stock actualizado con éxito");
     }
 
     /**
@@ -60,6 +60,6 @@ class StockController extends Controller
         // Eliminar el carrito
         $stock->delete();
 
-        return response()->json("El stock $stockId ha sido eliminado");
+        return response()->ok($message="El stock $stockId ha sido eliminado");
     }
 }

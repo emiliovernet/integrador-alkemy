@@ -26,42 +26,52 @@ use App\Http\Controllers\StockController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::prefix('v1')->group(function () {
+
+    Route::middleware(['api', 'auth:api'])->group(function () {
+        Route::prefix('auth')->group(function () {
+            
+    // RUTAS LOGIN Y REGISTRO
+            Route::post('login', [AuthController::class, 'login'])->name('login')->withoutMiddleware(['auth:api']);
+            Route::post('registro', [AuthController::class, 'registrar'])->name('auth.registro')->withoutMiddleware(['auth:api']);
+            Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+        });
+
+        // RUTAS USUARIO
+        Route::get('/usuarios', [UsuarioController::class, 'listar']);
+        Route::get('/usuarios/{id}', [UsuarioController::class, 'ver']);
+        Route::put('/usuarios/{id}', [UsuarioController::class, 'actualizar']);
+        
+        // RUTAS CATEGORIA
+        Route::post('/categorias', [CategoriaController::class, 'crear']);
+        Route::put('/categorias/{id}', [CategoriaController::class, 'actualizar']);
+        Route::get('/categorias', [CategoriaController::class, 'listar']);
+        
+        // RUTAS PRODUCTO
+        Route::post('/productos', [ProductoController::class, 'crear']);
+        Route::put('/productos/{id}', [ProductoController::class, 'actualizar']);
+        Route::delete('/productos/{id}', [ProductoController::class, 'eliminar']);
+        Route::get('/productos/{id}', [ProductoController::class, 'ver']);
+        Route::get('/productos', [ProductoController::class, 'listar']);
+        
+        // RUTAS METODO DE PAGO
+        Route::post('/metodo_pagos', [MetodoPagoController::class, 'crear']);
+        Route::post('/metodo_pagos', [MetodoPagoController::class, 'actualizar']);
+        Route::get('/metodo_pagos', [MetodoPagoController::class, 'listar']);
+        
+        // // RUTAS CARRITO DE COMRAS
+        Route::apiResource('carritos', CarritoController::class);
+        
+        // RUTAS PEDIDOS
+        Route::apiResource('pedidos', PedidoController::class);
+        
+        // RUTAS ORDEN DE COMPRA
+        Route::apiResource('ordenes', OrdenController::class);
+        
+        // RUTAS STOCK
+        Route::apiResource('stocks', StockController::class);
+    });
+
 });
-
-
-//Route::post('/login', [AuthController::class, 'auth']);
-
-
-// RUTAS USUARIO
-
-Route::get('/usuario', [UsuarioController::class, 'listar']);
-Route::get('/usuario/{id}', [UsuarioController::class, 'ver']);
-Route::put('/usuario/{id}', [UsuarioController::class, 'actulizar']);
-
-// RUTAS CATEGORIA
-Route::post('/categoria', [CategoriaController::class, 'crear']);
-Route::put('/categoria/{id}', [CategoriaController::class, 'actualizar']);
-
-// RUTAS PRODUCTO
-Route::post('/producto', [ProductoController::class, 'crear']);
-Route::put('/producto/{id}', [ProductoController::class, 'actualizar']);
-Route::delete('/producto/{id}', [ProductoController::class, 'eliminar']);
-Route::get('/producto/{id}', [ProductoController::class, 'ver']);
-
-// RUTAS METODO DE PAGO
-Route::post('/metodospago', [MetodoPagoController::class, 'crear']);
-Route::post('/metodospago', [MetodoPagoController::class, 'actualizar']);
-
-// // RUTAS CARRITO DE COMRAS
-Route::apiResource('carrito', CarritoController::class);
-
-// RUTAS PEDIDOS
-Route::apiResource('pedido', PedidoController::class);
-
-// RUTAS ORDEN DE COMPRA
-Route::apiResource('orden', OrdenController::class);
-
-// RUTAS STOCK
-Route::apiResource('stock', StockController::class);

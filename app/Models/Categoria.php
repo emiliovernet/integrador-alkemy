@@ -12,7 +12,10 @@ class Categoria extends Model
     use HasFactory;
     protected $table = 'categorias';
     protected $fillable = ['nombre'];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 
     public function productos(): HasMany
     {

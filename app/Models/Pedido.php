@@ -11,9 +11,25 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Pedido extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
-    protected $fillable = ['carrito_id', 'producto_id', 'cantidad', 'importe'];
+    protected $fillable = [
+        'carrito_id',
+        'producto_id',
+        'cantidad',
+        'importe'
+    ];
+
+    protected $hidden = [
+        'carrito_id',
+        'producto_id',
+        'created_at', 
+        'updated_at'
+    ];
+
+    protected $with = [
+        'carrito',
+        'producto',
+    ];
 
     public function carrito(): BelongsTo
     {

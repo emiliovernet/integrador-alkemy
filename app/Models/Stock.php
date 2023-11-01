@@ -9,8 +9,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Stock extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-    protected $fillable = ['producto_id', 'cantidad'];
+    
+    protected $fillable = [
+        'producto_id',
+        'cantidad'
+    ];
+
+    protected $hidden = [
+        'producto_id',
+        'created_at', 
+        'updated_at'
+    ];
+
+    protected $with = [
+        'producto'
+    ];
+
+
 
     public function producto(): BelongsTo
     {

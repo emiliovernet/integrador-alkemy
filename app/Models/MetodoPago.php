@@ -10,9 +10,11 @@ class MetodoPago extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    // protected $table = 'metodos_pago';
     protected $fillable = ['tipo'];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 
     public function orden(): HasMany
     {
